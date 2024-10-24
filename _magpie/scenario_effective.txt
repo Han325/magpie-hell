@@ -1,6 +1,5 @@
 [magpie]
 default_lengthout = 1e5
-test_timeout = 10
 
 [software]
 path = code
