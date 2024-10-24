@@ -1,0 +1,34 @@
+[magpie]
+default_lengthout = 1e5
+test_timeout = 10
+
+[software]
+path = code
+target_files =
+    MERGESORT.java.xml
+fitness = repair
+model_config =
+     *.xml : [srcml]
+init_cmd = bash init_bug.sh
+compile_cmd = javac -cp junit-4.10.jar MERGESORT.java MERGESORT_TEST.java
+test_cmd = java -cp junit-4.10.jar:. org.junit.runner.JUnitCore MERGESORT_TEST
+batch_fitness_strategy = average
+
+
+[search]
+target_fitness = 0
+algorithm = GeneticProgrammingUniformInter
+max_steps = 400
+max_time = 60
+possible_edits =
+    SrcmlConditionReplacement
+    SrcmlComparisonOperatorSetting
+    SrcmlNumericSetting
+
+   
+[search.gp]
+pop_size = 40
+
+
+[srcml]
+focus = block stmt operator_comp operator_arith number condition
