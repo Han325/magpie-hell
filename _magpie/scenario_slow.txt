@@ -1,0 +1,26 @@
+[magpie]
+default_lengthout = 1e10
+
+[software]
+path = examples/mergesort-java
+target_files =
+    MERGESORT.java.xml
+fitness = time
+
+init_cmd = bash init_slow.sh
+compile_cmd = javac -cp junit-4.10.jar MERGESORT.java MERGESORT_TEST.java
+test_cmd = java -cp junit-4.10.jar:. org.junit.runner.JUnitCore MERGESORT_TEST
+run_cmd = java -cp junit-4.10.jar:. org.junit.runner.JUnitCore MERGESORT_TEST
+
+[search]
+target_fitness = 0
+max_steps = 10000
+max_time = 720000
+possible_edits =
+    SrcmlStmtReplacement
+    SrcmlStmtInsertion
+    SrcmlStmtDeletion
+
+
+
+
